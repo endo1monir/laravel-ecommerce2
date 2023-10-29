@@ -60,6 +60,6 @@
 
 <script src="{{asset('admin/js/jquery.cookie.js')}}" type="text/javascript"></script>
 @livewireScripts
-
+@stack('scripts')
 </body>
 </html>

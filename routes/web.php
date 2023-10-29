@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashBoardController as DashBoardController;
+use \App\Http\Controllers\Admin\CategoryController as CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function () {
-    Route::get('dashboard',[DashBoardController::class,'index']);
-    Route::get('category',[\App\Http\Controllers\Admin\CategoryController::class,'index'])->name('category');
-    Route::get('category/create',[\App\Http\Controllers\Admin\CategoryController::class,'create'])->name('category.create');
-    Route::post('category/store',[\App\Http\Controllers\Admin\CategoryController::class,'store'])->name('category.store');
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('dashboard', [DashBoardController::class, 'index']);
+
+    Route::controller(CategoryController::class)->group(function () {
+
+        Route::get('category',  'index')->name('category');
+        Route::get('category/create',  'create')->name('category.create');
+        Route::post('category/store',  'store')->name('category.store');
+        Route::get('category/{category}/edit',  'edit')->name('category.edit');
+        Route::put('category/{category}',  'update')->name('category.update');
+        Route::get('category/{category}/delete',  'delete')->name('category.delete');
+    });
+    Route::get('brands',\App\Http\Livewire\Admin\Brand\Index::class)->name('brands.index');
 });
