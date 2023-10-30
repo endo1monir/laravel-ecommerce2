@@ -42,21 +42,36 @@ class Index extends Component
         $this->name = $brand->name;
         $this->slug = $brand->slug;
         $this->status = $brand->status;
-        $this->brand=$brand;
+        $this->brand = $brand;
     }
 
     public function updateBrand()
     {
         $data = $this->validate();
         $this->brand->update(
-          [
-              'name' => $data['name'],
-              'slug' => Str::slug($data['slug']),
-              'status' => $data['status'] ? 1 : 0
-          ]
+            [
+                'name' => $data['name'],
+                'slug' => Str::slug($data['slug']),
+                'status' => $data['status'] ? 1 : 0
+            ]
         );
         $this->reset();
-        session()->flash('brand-msg','brand updated successfully');
+        sleep(1);
+        session()->flash('brand-msg', 'brand updated successfully');
+        $this->emit('closeModal');
+
+    }
+
+    public function deleteBrand(Brand $brand)
+    {
+        $this->brand = $brand;
+    }
+
+    public function DestroyBrand()
+    {
+        $this->brand->delete();
+        sleep(1);
+        session()->flash('brand-msg', 'brand deleted successfully');
         $this->emit('closeModal');
     }
 
