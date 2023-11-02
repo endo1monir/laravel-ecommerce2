@@ -25,22 +25,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
                             <tr>
-                                <td>{{$category->id}}</td>
-                                <td>{{$category->name}}</td>
-                                <td>{{$category->status ? 'visible':'hidden' }}</td>
-                                <td>
-                                    <a href="{{route('category.edit',$category->id)}}" class="btn btn-success text-white">Edit</a>
-                                    <a wire:click="deleteCategory({{$category->id}})" data-bs-toggle="modal"
-                                       data-bs-target="#deleteModal" href="#"
-                                       class="btn btn-danger text-white">Delete</a>
-                                </td>
+
                             </tr>
-                        @endforeach
+
                         </tbody>
                     </table>
-                    {{$categories->links()}}
+
                 </div>
             </div>
         </div>
