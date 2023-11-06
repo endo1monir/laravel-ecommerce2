@@ -9,7 +9,7 @@
                     </h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -27,6 +27,12 @@
                             <button class="nav-link" id="details-tab" data-bs-toggle="tab"
                                     data-bs-target="#details-tab-pane" type="button" role="tab"
                                     aria-controls="details-tab-pane" aria-selected="false">Details
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="images-tab" data-bs-toggle="tab"
+                                    data-bs-target="#images-tab-pane" type="button" role="tab"
+                                    aria-controls="details-tab-pane" aria-selected="false">Images
                             </button>
                         </li>
 
@@ -95,6 +101,22 @@
                                 <label>Quantity</label>
                                 <input type="number" name="quantity" class="form-control"/>
                             </div>
+                            <div class="mb-3">
+                                <label>Trending</label>
+                                <input type="checkbox" name="trending" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Status</label>
+                                <input type="checkbox" name="status" />
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="images-tab-pane" role="tabpanel" aria-labelledby="details-tab"
+                             tabindex="0">
+                            <div class="mb-3  mt-3">
+                                <label class="mb-2">Images</label>
+                                <input type="file" multiple name="products_images" class="form-control"/>
+                            </div>
+
                         </div>
 
                     </div>
