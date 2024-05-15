@@ -37,4 +37,5 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     });
     Route::get('brands', \App\Http\Livewire\Admin\Brand\Index::class)->name('brands.index');
     Route::resource('products', ProductController::class);
+    Route::get('product-images/{product_image}/delete',[ProductController::class,'deleteImages'])->name('admin.product.image.delete');
 });

@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\ProductFormRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Services\Admin\Product\ProductService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -24,8 +26,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products=Product::with('category')->paginate();
-        return view('admin.products.index',get_defined_vars());
+        $products = Product::with('category')->paginate();
+        return view('admin.products.index', get_defined_vars());
     }
 
     /**
@@ -69,9 +71,11 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $categories = Category::select('id', 'name')->get();
+        $brands = Brand::select('id', 'name')->get();
+        return view("admin.products.edit", get_defined_vars());
     }
 
     /**
@@ -81,9 +85,10 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductFormRequest $request, Product $product)
     {
-        //
+        $this->productService->update($product, $request);
+        return redirect()->route('products.index')->with('product_msg', 'Product Updated Successfully');
     }
 
     /**
@@ -95,5 +100,14 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deleteImages(ProductImage $productImage)
+    {
+        if (File::exists($productImage->image)) {
+            File::delete($productImage->image);
+        }
+        $productImage->delete();
+        return redirect()->back()->with('product_msg', 'Image Deleted Successfully');
     }
 }
