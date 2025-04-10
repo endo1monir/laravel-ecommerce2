@@ -39,7 +39,15 @@
                                 <td>{{$product->quantity}}</td>
                                 <td>{{$product->status? 'active':'hidden' }}</td>
                                 <td><a href="{{route('products.edit',$product->id)}}" class="btn btn-success"> Edit </a>
-                                    <a href="" class="btn btn-danger"> Delete </a>
+                                    <a href="#" onclick=" event.preventDefault();if( confirm('do you want to delete the product ?')){
+                                        document.getElementById('delete-form-{{$product->id}}').submit();
+                                    }" class="btn btn-danger"> Delete </a>
+                                    <form id="delete-form-{{$product->id}}"
+                                          action="{{route("products.destroy",$product->id)}}" method="POST"
+                                          class="d-none">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                             </tr>
                         @empty

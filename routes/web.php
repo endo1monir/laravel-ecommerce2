@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashBoardController as DashBoardController;
 use \App\Http\Controllers\Admin\CategoryController as CategoryController;
 use \App\Http\Controllers\Admin\ProductController as ProductController;
-
+use \App\Http\Controllers\Admin\ColorsController as ColorsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +38,5 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('brands', \App\Http\Livewire\Admin\Brand\Index::class)->name('brands.index');
     Route::resource('products', ProductController::class);
     Route::get('product-images/{product_image}/delete',[ProductController::class,'deleteImages'])->name('admin.product.image.delete');
+    Route::resource('colors', ColorsController::class);
 });

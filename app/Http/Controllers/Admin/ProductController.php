@@ -97,9 +97,15 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        if($product->productImages()){
+            foreach ($product->productImages as $productImage){
+                File::delete($productImage->image);
+            }
+        }
+        $product->delete();
+        return redirect()->route('products.index')->with('product_msg', 'Product Deleted Successfully');
     }
 
     public function deleteImages(ProductImage $productImage)

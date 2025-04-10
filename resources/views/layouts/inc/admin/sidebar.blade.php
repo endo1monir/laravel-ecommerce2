@@ -27,6 +27,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{route('colors.index')}}">
+                <i class="mdi mdi-view-headline menu-icon"></i>
+                <span class="menu-title">colors</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#products-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="mdi mdi-plus-circle menu-icon"></i>
                 <span class="menu-title">Products</span>
