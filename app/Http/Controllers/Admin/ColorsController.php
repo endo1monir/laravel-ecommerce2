@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorecolorsRequest;
 use App\Http\Requests\UpdatecolorsRequest;
-use App\Models\colors;
+use App\Models\color;
 
 class ColorsController extends Controller
 {
@@ -16,7 +16,8 @@ class ColorsController extends Controller
      */
     public function index()
     {
-        // 
+        //
+        return view('admin.colors.index');
     }
 
     /**
@@ -43,10 +44,10 @@ class ColorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Http\Response
      */
-    public function show(colors $colors)
+    public function show(color $colors)
     {
         //
     }
@@ -54,10 +55,10 @@ class ColorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Http\Response
      */
-    public function edit(colors $colors)
+    public function edit(color $colors)
     {
         //
     }
@@ -66,10 +67,10 @@ class ColorsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatecolorsRequest  $request
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecolorsRequest $request, colors $colors)
+    public function update(UpdatecolorsRequest $request, color $colors)
     {
         //
     }
@@ -77,10 +78,10 @@ class ColorsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Http\Response
      */
-    public function destroy(colors $colors)
+    public function destroy(color $colors)
     {
         //
     }

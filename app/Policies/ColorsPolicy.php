@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\colors;
+use App\Models\color;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ColorsPolicy
@@ -25,10 +25,10 @@ class ColorsPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, colors $colors)
+    public function view(User $user, color $colors)
     {
         //
     }
@@ -48,10 +48,10 @@ class ColorsPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, colors $colors)
+    public function update(User $user, color $colors)
     {
         //
     }
@@ -60,10 +60,10 @@ class ColorsPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, colors $colors)
+    public function delete(User $user, color $colors)
     {
         //
     }
@@ -72,10 +72,10 @@ class ColorsPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, colors $colors)
+    public function restore(User $user, color $colors)
     {
         //
     }
@@ -84,10 +84,10 @@ class ColorsPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\colors  $colors
+     * @param  \App\Models\color  $colors
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, colors $colors)
+    public function forceDelete(User $user, color $colors)
     {
         //
     }
